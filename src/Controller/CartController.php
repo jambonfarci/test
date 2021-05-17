@@ -5,9 +5,17 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Entity\Promotion;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
-class MainController
+/**
+ * Class CartController
+ * @package App\Controller
+ */
+class CartController
 {
+    /**
+     * @Route("/cart", name="cart")
+     */
     public function index(): Response
     {
         $product1 = new Product('Cuve à gasoil', 250000, 'Farmitoo');
