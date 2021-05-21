@@ -1,3 +1,32 @@
+# Réalisation
+
+## Installation
+
+`composer install`  
+`symfony server:start`
+
+## Commentaires
+
+Je n'ai pas géré la persistence des données. Elles n'existent donc que dans le scope dans lequel elles sont utilisées.  
+L'utilisation de la session aurait ici été judicieuse.
+
+Afin d'ajouter facilement une nouvelle marque au système, il suffit juste de créer une nouvelle classe concrète qui  
+étend la classe abstraite "Brand" et qui implémente l'interface "ShippingStrategyInterface". De cette manière, il sera  
+facile pour chaque marque d'avoir des règles de gestion complètement différentes.
+
+Le système utilisant la classe abstraite "Brand" pourrait être appliqué sous cette forme lors de la mise en place  
+d'une base de donnée utilisant Doctrine : https://martinfowler.com/eaaCatalog/singleTableInheritance.html.
+
+J'ai considéré que le taux de TVA était lié au pays de la marque et donc fait uniquement comme cela. Si ce calcul est  
+complètement différent en fonction de chaque marque, il est possible de passer sur un système d'interface de la même  
+manière que pour les frais de port.
+
+Concernant les promotions, le cas d'utilisation n'étant pas clair pour moi, j'ai considéré qu'une promotion s'appliquait  
+à un produit. De plus, un système de "Rule" similaire à celui de "Brand" est implémenté, ce qui permet d'être flexible  
+par rapport aux conditions d'application d'une promotion. L'idée sous-jacente est de pouvoir réutiliser ce système de  
+"Rule" à d'autres entité business. Ce n'est cependant pas tout à fait applicable en l'état car la fonction abstraite  
+est liée à une entité "Item".
+
 # TEST
 
 Ceci est le repository pour le test technique de Farmitoo.
