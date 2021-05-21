@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Farmitoo : Achetez en ligne vos équipements agricoles en direct des fabricants ! Grande sélection. Prix bas et transparent. Paiement sécurisé. Livraison partout en France. Catégories : Machines agricoles, pièces tracteur, matériel d'élevage, matériel d'atelier, EPI">
+
+    <title>Farmitoo : achats en ligne équipements agricoles</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+            <img src="{{ asset('images/farmitoo-logo.svg') }}" width="112" height="28" alt="">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">
+                Produits
+            </a>
+
+            <a class="navbar-item">
+                Pièces par machine
+            </a>
+
+            <a class="navbar-item">
+                Bonnes affaires
+            </a>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <p class="control">
+                    <a class="button is-primary">
+                        <span>Mon compte</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>
+<body>
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="box">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Marque</th>
+                    <th>Prix unitaire HT</th>
+                    <th>Quantité</th>
+                    <th>Prix total HT</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in order.items %}
+                <tr>
+                    <td>{{ item.product.title }}</td>
+                    <td>{{ item.product.brand.name }}</td>
+                    <td>{{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.value }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table class="table is-bordered is-narrow is-hoverable is-fullwidth">
+            <tbody>
+                <tr>
+                    <th>Sous-total HT</th>
+                    <td>{{ order.subTotalHt|format_currency('EUR', {rounding_mode: 'floor'}) }}</td>
+                </tr>
+                {% if order.promotionsValue > 0 %}
+                    <tr>
+                        <th>Total des remises</th>
+                        <td>{{ order.promotionsValue|format_currency('EUR', {rounding_mode: 'floor'}) }}</td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <th>Frais de port HT</th>
+                    <td>{{ order.shippingCost|format_currency('EUR', {rounding_mode: 'floor'}) }}</td>
+                </tr>
+                <tr>
+                    <th>Total HT</th>
+                    <td>{{ order.totalHt|format_currency('EUR', {rounding_mode: 'floor'}) }}</td>
+                </tr>
+                <tr>
+                    <th>TVA</th>
+                    <td>{{ order.vat|format_currency('EUR', {rounding_mode: 'floor'}) }}</td>
+                </tr>
+                <tr class="is-selected">
+                    <th>Total TTC</th>
+                    <td>{{ order.totalTtc|format_currency('EUR', {rounding_mode: 'floor'}) }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="tabs is-right">
+            <button class="button is-primary">Valider mon panier</button>
+        </div>
+    </div>
+{% endblock %}
